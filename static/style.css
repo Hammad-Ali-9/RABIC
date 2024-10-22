@@ -1,0 +1,142 @@
+@import url('https://fonts.cdnfonts.com/css/bebas-neue');
+@import url('https://fonts.cdnfonts.com/css/poppins');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    height: 100%;
+    font-family: Arial, sans-serif;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+    scroll-behavior: smooth; /* Smooth scroll effect */
+}
+
+nav {
+    background: transparent;
+    display: flex;
+    justify-content: space-between;
+    padding: 5vh 8vw;
+}
+
+.logo {
+    /* position: fixed; */
+    font-size: 30px;
+    font-weight: 700;
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+}
+a.logo:hover{
+    /* position: fixed; */
+    font-size: 30px;
+    font-weight: 700;
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+}
+
+.navcenter {
+    border-radius: 30px;
+    transform: translateX(-50%);
+    width: 344px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #141414c6;
+    position: fixed;
+    height: 40px;
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    backdrop-filter: blur(25px);
+    z-index: 999; /* High z-index for the nav */
+    border: 1px solid hsla(0, 0%, 100%, .04);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, .188), 0 10px 10px rgba(0, 0, 0, .169);
+    transition: box-shadow .7s ease-in-out;
+}
+
+
+.Item_item__h59_f a {
+    padding: 5px 25px;
+    color: white;
+    text-decoration: none;
+    font-size: 15px;
+    transition: background-color 0.3s;
+}
+
+.active {
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 0.5px solid rgb(128, 125, 125);
+    border-radius: 20px 0px 0px 20px;
+    padding: 3px;
+}
+
+.navcenter .Item_item__h59_f:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 0.5px solid rgb(128, 125, 125);
+    padding: 3px;
+    color: white;
+}
+
+.navcenter .Item_item__h59_f:hover:nth-child(3) {
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 0.5px solid rgb(128, 125, 125);
+    padding: 3px;
+    border-radius: 0px 20px 20px 0px;
+    color: white;
+}
+
+
+
+.hero{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: end;
+    margin: 0;
+    padding: 0;
+    font-family: 'Bebas Neue', sans-serif;
+    gap: 10vw;
+    padding: 12vh 7vw 22vh 8vw;;
+
+}
+
+.hero h1{
+    font-size: 40px;
+    font-weight: 900;
+}
+
+.hero img{
+    border-radius: 25px;
+}
+
+.hero button{
+    padding: 10px 20px;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.Tp__footer-main {
+    background-color: #202022;
+    color: #fff;
+    padding-top: 89px;
+    flex-direction: column;
+}
+
+.d-flex {
+    display: -ms-flexbox !important;
+    display: flex !important;
+}
+
+.col-md-3 a{
+    display: flex;
+    color: #fff;
+    text-decoration: none;
+}
+
+.col-md-3 a:hover{
+    display: flex;
+    color: #fff;
+    text-decoration: none;
+    flex-direction: row;
+}

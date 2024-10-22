@@ -1,2 +1,193 @@
-{% extends "base.html" %}
-{% block title %}Home{% endblock title %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>RABIc | YOUR AI Data Analyst</title>
+    <link rel="stylesheet" href="{% static 'style.css'%}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+
+<body>
+    <!-- Navbar -->
+
+    <nav>
+        <a href="/" class="logo">RABIc</a>
+        <div class="navcenter">
+            <div class="Item_item__h59_f active" style="opacity:1;transform:none">
+                <a href="#section1">Use Cases</a>
+            </div>
+            <div class="Item_item__h59_f" style="opacity:1;transform:none">
+                <a href="#section2">Docs</a>
+            </div>
+            <div class="Item_item__h59_f" style="opacity:1;transform:none">
+                <a href="#section2">Community</a>
+            </div>
+        </div>
+        <div class="navbutton" style=" right: 7vw; z-index: 1050;">
+            <!-- Button trigger modal for Sign Up -->
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#signupModal">
+                Sign Up
+            </button>
+
+            <!-- Sign Up Modal -->
+            <div class="modal fade" id="signupModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+                aria-labelledby="signupModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="signupModalLabel">Sign Up</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        
+                        <form class="mx-5 my-5" method="POST" action="/index">
+                            {% csrf_token %}
+                            <div class="mb-3">
+                                <label for="exampleInputEmail1" class="form-label">Email address</label>
+                                <input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp">
+                                <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="exampleInputPassword1" class="form-label">Password</label>
+                                <input type="password" name="pwd" id="pwd" class="form-control" id="exampleInputPassword1">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            {% if error %}
+            <div style="color: red;">{{ error }}</div>
+        {% endif %}
+        
+        {% if success %}
+            <div style="color: green;">{{ success }}</div>
+        {% endif %}
+            <!-- Button trigger modal for Login -->
+            <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#loginModal">
+                Login
+            </button>
+
+            <!-- Login Modal -->
+            <div class="modal fade" id="loginModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+                aria-labelledby="loginModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="loginModalLabel">Login</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <div class="mb-3">
+                                    <label for="exampleInputEmail1" class="form-label">Email address</label>
+                                    <input type="email" class="form-control" id="exampleInputEmail1"
+                                        aria-describedby="emailHelp">
+                                    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="exampleInputPassword1" class="form-label">Password</label>
+                                    <input type="password" class="form-control" id="exampleInputPassword1">
+                                </div>
+                                <div class="mb-3 form-check">
+                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                                </div>
+                                <button type="submit" class="btn btn-dark">Login</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+
+    <div class="hero">
+        <div class="hero1">
+            <h1>Analyze your data
+                with computational AI.Analyze your data
+                with computational AI.
+            </h1>
+            <p>Chat with your files and get expert-level insights in seconds.</p>
+            <button>Try RABIc</button>
+        </div>
+        <div class="hero2">
+            <img src="https://media.istockphoto.com/id/1393224923/photo/automation-data-analytic-with-robotic-brain-and-digital-visualization-for-big-data-scientist.jpg?s=612x612&w=0&k=20&c=Jnz3Nsedn8l_AEmvMNCnM5nZKOhP9Yri-ughVf1_B7k="
+                alt="">
+        </div>
+    </div>
+
+
+    <div class="footer">
+        <footer class="Tp__footer-main d-flex custom-conatiner">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-5 col-sm-12 box sm-order-1">
+                        <div class="footer-content">
+                            <a href="#/" class="custom-logo-link" rel="home" style="    font-size: 30px;font-weight: 700; color: rgb(255, 255, 255); text-decoration: none;">RABIc</a>
+                            <p>RABIc is an award-winning digital development company, helping businesses with product
+                                design, development, and technology acceleration.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-12 box sm-order-2">
+                        <div class="quick-links">
+                            <ul id="menu-footer-menu" class="list-style-none">
+                                <li id="menu-item-14811"
+                                    class="menu-item menu-item-type-post_type menu-item-object-page menu-item-14811"><a
+                                        href="#/about/" target="_top">Company</a></li>
+                                <li id="menu-item-14401"
+                                    class="menu-item menu-item-type-post_type menu-item-object-page menu-item-14401"><a
+                                        href="#/news-insights/" target="_top">Insights</a></li>
+                                <li id="menu-item-16847"
+                                    class="menu-item menu-item-type-post_type menu-item-object-page menu-item-16847"><a
+                                        href="#/services/" target="_top">Services</a></li>
+                                <li id="menu-item-14400"
+                                    class="menu-item menu-item-type-post_type menu-item-object-page menu-item-14400"><a
+                                        href="#/life-at-RABIc/" target="_top">Careers</a></li>
+                                <li id="menu-item-16848"
+                                    class="menu-item menu-item-type-post_type menu-item-object-page menu-item-16848"><a
+                                        href="#/casestudies/" target="_top">Industries</a></li>
+                                <li id="menu-item-16851"
+                                    class="menu-item menu-item-type-post_type menu-item-object-page menu-item-16851"><a
+                                        href="#/get-in-touch/" target="_top">Contact</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-12 box sm-order-3">
+                        <div class="contry-list">
+                            <ul class="list-style-none padded-list">
+                                <li>USA (HQ in Wash DC)</li>
+                                <li>Costa Rica</li>
+                                <li>Pakistan</li>
+                            </ul>
+                            <ul class="list-style-none padded-list">
+                                <li>Colombia</li>
+                                <li>Peru </li>
+                                <li>UK</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+
+    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+        integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
