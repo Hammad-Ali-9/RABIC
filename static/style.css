@@ -63,7 +63,9 @@ a.logo:hover{
     font-size: 15px;
     transition: background-color 0.3s;
 }
-
+.Item_item__h59_f a:hover{
+    color: white;
+}
 .active {
     background-color: rgba(255, 255, 255, 0.1);
     border: 0.5px solid rgb(128, 125, 125);
@@ -213,4 +215,40 @@ a.logo:hover{
 
 .custom-section{
     margin-bottom: 15vh;
+}
+
+.dash{
+    text-decoration: none;
+    display: flex;
+    width: 84vw;
+    height: 78vh;
+    margin: -128px 0px 0px 107px;
+    border-radius: 17px;
+    color: #FFF;
+}
+
+.dash1{
+    margin: 10px;
+    background-color: #1c1818;
+    width: 14vw;
+    height: 78vh;
+    margin: 0;
+    padding: 0;
+    border-radius: 14px 0px 0px 14px
+}
+
+.dash1 h1{
+    font-family: 'Bebas Neue', sans-serif;
+    font-weight: 700;
+    font-size: 25px;
+    color: #FFF;
+}
+
+.dash2{
+    background-color: yellowgreen;
+    width: 70vw;
+    height: 78vh;
+    margin: 0;
+    padding: 0;
+    border-radius: 0px 15px 14px 0px;
 }
