@@ -1,0 +1,72 @@
+{% extends "index.html" %}
+{% block title %}Docs{% endblock title %}
+{% block body %}
+<div>
+    <div class="accordion-container mx-5 my-5">
+        <h1 style="font-family:'Bebas Neue', sans-serif; font-weight:700">Frequently Asked:</h1>
+        <div class="accordion accordion-flush" id="accordionFlushExample">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="flush-headingOne">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                        <strong>How do I link a data source?</strong>
+                    </button>
+                </h2>
+                <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body"><dd class="col-sm-9">You can link a data source on the My Files page or directly in our Chat interface. For more detailed instructions on linking a data source, check out our RABIc Start Guide.</dd></div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="flush-headingTwo">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                        <strong>Can I analyze spreadsheets with multiple tabs?</strong>
+                    </button>
+                </h2>
+                <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body"><dd class="col-sm-9">Yes! Upload your multi-tab spreadsheet as you would any other file. Once uploaded, you can refer to the individual names of the tabs in your prompts, and RABIc will perform analysis on those tabs accordingly.</dd></div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="flush-headingThree">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                        <strong>What do I do after linking a data source?</strong>
+                    </button>
+                </h2>
+                <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body"><dd class="col-sm-9">After linking data source, you can analyze it with natural language prompting on the Chat page — try asking for insights or directing RABIc to create a visualization. For some additional examples on how to use RABIc, check out our Use Cases section.</dd></div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="flush-headingFour">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
+                        <strong>Is there a discount for students, professors, or teachers?</strong>
+                    </button>
+                </h2>
+                <div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="flush-headingFour" data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body"><dd class="col-sm-9">Yes! We offer a 50% discount to students and other members of academia. Just sign up, shoot us a quick email at team@RABIc.ai letting us know you're a student before subscribing, and we'll let you know how to apply the 50% discount to your account.</dd></div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="flush-headingFive">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFive" aria-expanded="false" aria-controls="flush-collapseFive">
+                        <strong>What can I do in RABIc?</strong>
+                    </button>
+                </h2>
+                <div id="flush-collapseFive" class="accordion-collapse collapse" aria-labelledby="flush-headingFive" data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body"><dd class="col-sm-9">Examples of prompts to use with RABIc:</dd></div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="flush-headingSix">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseSix" aria-expanded="false" aria-controls="flush-collapseSix">
+                        <strong>What data sources are supported?</strong>
+                    </button>
+                </h2>
+                <div id="flush-collapseSix" class="accordion-collapse collapse" aria-labelledby="flush-headingSix" data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body"><dd class="col-sm-9">We currently support any data file format, including but not limited to Spreadsheets (.xls, .xlsx, .xlsm, .xlsb, .csv), Google Sheets, and Postgres databases. If you have a different file format, odds are we support it — go ahead and try to upload it within the RABIc Chat!</dd></div>
+                </div>
+            </div>
+        </div>        
+        </div>
+    </div>
+</div>
+{% endblock body %}

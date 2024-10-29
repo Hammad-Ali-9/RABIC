@@ -1,4 +1,4 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render, HttpResponse, redirect
 from datetime import datetime
 from django.core.exceptions import ValidationError
 from home.models import Signup
@@ -10,18 +10,39 @@ def index(request):
     #     "section":"5B"
     # }
     if request.method == "POST":
+        username=request.POST.get("username")
         email=request.POST.get("email")
         pwd=request.POST.get("pwd")
-        signup = Signup(email=email,pwd=pwd,date=datetime.today())        
-        signup.save()
-        
+        signup = Signup(username=username,email=email,pwd=pwd,date=datetime.today())        
+        signup.save()   
         
     return render(request, 'index.html')
-    # return HttpResponse("home page")
 
-# def login(request):
-#     return render(request, 'login.html')
 
+def login(request):
+    error_message = None
+    if request.method == "POST":
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+
+        try:
+            user = Signup.objects.get(username=username)
+            if user.pwd == password:
+                request.session['password'] = user.pwd
+                request.session['username'] = user.username
+                return render(request, 'index.html')  # Redirect to index page on success
+            else:
+                error_message = "Invalid username or password"
+        except Signup.DoesNotExist:
+            error_message = "Invalid username or password"
+
+    return render(request, "login.html", {'error_message': error_message})
+
+def docs(request):
+    return render(request, 'docs.html')
+
+def community(request):
+    return render(request, 'community.html')
 # def signup(request):
 #     return HttpResponse("Signup page")
 

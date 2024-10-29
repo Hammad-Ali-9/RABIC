@@ -16,6 +16,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from home import views
+
 
 admin.site.site_title = "RABIC-AI"
 admin.site.site_header = "Hammad's RABIC-AI"
@@ -23,5 +25,6 @@ admin.site.index_title = "RABIC"
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('home.urls'))
+    path('', include('home.urls')),
+    path('login/', views.login, name='login')
 ]

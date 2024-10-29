@@ -1,30 +1,100 @@
+{% block html %}
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     {% load static %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>RABIc | YOUR AI Data Analyst</title>
+    <title>RABIc | {% block title %}YOUR AI Data Analyst{% endblock title %}</title>
     <link rel="stylesheet" href="{% static 'style.css'%}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <style>
+        #custom-section .container {
+            font-family: 'Poppins', sans-serif;
+            background-color: #312e2e;
+            color: #FFFFFF;
+            padding: 53px;
+            max-width: 1133px;
+            margin: 0 auto;
+        }
+        
+        #custom-section .button-container {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        #custom-section .button-container button {
+            background-color: #1c1818;
+            color: #FFF;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        
+        #custom-section .section-title {
+            font-weight: 700;
+            font-size: 18px;
+            margin-top: 30px;
+            margin-bottom: 20px;
+        }
+        
+        #custom-section .footnotes {
+            margin-bottom: 30px;
+        }
+        
+        #custom-section .footnote-item {
+            display: flex;
+            gap: 10px;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+        
+        #custom-section .footnote-item .symbol {
+            font-weight: 500;
+        }
+        
+        #custom-section .references {
+            font-size: 14px;
+        }
+        
+        #custom-section .reference-item {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        
+        #custom-section .reference-item .number {
+            font-weight: 500;
+        }
+        
+        #custom-section a {
+            color: #A1C3FF;
+            text-decoration: none;
+        }
+        
+        #custom-section a:hover {
+            text-decoration: underline;
+        }
+        
+    </style>
 </head>
-
 <body>
     <!-- Navbar -->
-
     <nav>
         <a href="/" class="logo">RABIc</a>
         <div class="navcenter">
             <div class="Item_item__h59_f active" style="opacity:1;transform:none">
-                <a href="#section1">Use Cases</a>
+                <a href="{% url "index" %}">Use Cases</a>
             </div>
             <div class="Item_item__h59_f" style="opacity:1;transform:none">
-                <a href="#section2">Docs</a>
+                <a href="{% url "docs" %}">Docs</a>
             </div>
             <div class="Item_item__h59_f" style="opacity:1;transform:none">
-                <a href="#section2">Community</a>
+                <a href="{% url "community" %}">Community</a>
             </div>
         </div>
         <div class="navbutton" style=" right: 7vw; z-index: 1050;">
@@ -46,9 +116,12 @@
                         <form class="mx-5 my-5" method="POST" action="/index">
                             {% csrf_token %}
                             <div class="mb-3">
+                                <label for="username" class="form-label">Username</label>
+                                <input type="username" name="username" class="form-control" id="username">
+                            </div>
+                            <div class="mb-3">
                                 <label for="exampleInputEmail1" class="form-label">Email address</label>
                                 <input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp">
-                                <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
                             </div>
                             <div class="mb-3">
                                 <label for="exampleInputPassword1" class="form-label">Password</label>
@@ -59,54 +132,41 @@
                     </div>
                 </div>
             </div>
-            {% if error %}
-            <div style="color: red;">{{ error }}</div>
-        {% endif %}
-        
-        {% if success %}
-            <div style="color: green;">{{ success }}</div>
-        {% endif %}
             <!-- Button trigger modal for Login -->
-            <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#loginModal">
-                Login
-            </button>
+            <a class="btn btn-secondary" href="{% url "login" %}" role="button">Login</a>
 
-            <!-- Login Modal -->
-            <div class="modal fade" id="loginModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-                aria-labelledby="loginModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="loginModalLabel">Login</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <form>
-                                <div class="mb-3">
-                                    <label for="exampleInputEmail1" class="form-label">Email address</label>
-                                    <input type="email" class="form-control" id="exampleInputEmail1"
-                                        aria-describedby="emailHelp">
-                                    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.
-                                    </div>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="exampleInputPassword1" class="form-label">Password</label>
-                                    <input type="password" class="form-control" id="exampleInputPassword1">
-                                </div>
-                                <div class="mb-3 form-check">
-                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                    <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                                </div>
-                                <button type="submit" class="btn btn-dark">Login</button>
-                            </form>
-                        </div>
+            {% comment %} <!-- Login Modal -->
+<!-- Login Modal -->
+        <div class="modal fade" id="loginModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="loginModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="loginModalLabel">Login</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form method="POST" action="login">
+                            {% csrf_token %}
+                            <div class="mb-3">
+                                <label for="username" class="form-label">Username</label>
+                                <input type="text" name="username" class="form-control" id="username">
+                            </div>
+                            <div class="mb-3">
+                                <label for="password" class="form-label">Password</label>
+                                <input type="password" name="password" class="form-control" id="password">
+                            </div>
+                            <button type="submit" class="btn btn-dark">Login</button>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
+        </div> {% endcomment %}
     </nav>
 
 
+    {% block body %}
     <div class="hero">
         <div class="hero1">
             <h1>Analyze your data
@@ -121,7 +181,67 @@
                 alt="">
         </div>
     </div>
+    <div id="custom-section">
+        <!-- Main container -->
+        <div class="container">
+            
+            <!-- Button Container -->
+            <div class="button-container">
+                <button>Announcements</button>
+                <button>Product</button>
+            </div>
+            
+            <!-- Footnotes Section -->
+            <div class="footnotes">
+                <div class="section-title">Footnotes</div>
+                <div class="footnote-item">
+                    <div class="symbol">A</div>
+                    <div>No purchase necessary, void where prohibited. Must be at least 18 to enter. For contest details, see the <a href="#">Official Rules</a>.</div>
+                </div>
+            </div>
+            
+            <!-- References Section -->
+            <div class="references">
+                <div class="section-title">References</div>
+                
+                <div class="reference-item">
+                    <div class="number">1</div>
+                    <div>Stiennon, Nisan, et al. "<a href="#">Learning to summarize with human feedback</a>." Advances in Neural Information Processing Systems 33 (2020): 3008-3021.</div>
+                </div>
+                
+                <div class="reference-item">
+                    <div class="number">2</div>
+                    <div>Gao, Leo, John Schulman, and Jacob Hilton. "<a href="#">Scaling Laws for Reward Model Overoptimization</a>." arXiv preprint arXiv:2210.01760 (2022).</div>
+                </div>
+                
+                <div class="reference-item">
+                    <div class="number">3</div>
+                    <div>The inspiration for this contest comes in part from work by Kenway, Josh, Camille François, Sasha Costanza-Chock, Inioluwa Deborah Raji, and Joy Buolamwini. <i>Bug Bounties For Algorithmic Harms? Lessons from Cybersecurity Vulnerability Disclosure for Algorithmic Harms Discovery, Disclosure, and Redress.</i> Washington, DC: Algorithmic Justice League, January 2022. Available at <a href="#">https://ajl.org/bugs</a>. See also work by Brundage, Miles, Avin, Shahar, Wang, Jasmine, Belfield, Haydn, and Gretchen Krueger et al. "Toward Trustworthy AI Development: Mechanisms for Supporting Verifiable Claims," April 2020. Available at <a href="#">https://arxiv.org/abs/2004.07213</a>. See an earlier instance of such a competition at HackerOne. 2021b. "<a href="#">Twitter Algorithmic Bias</a>." HackerOne. <a href="#">https://hackerone.com/twitter-algorithmic-bias?type=team</a>. Finally, see early published work on this topic from Rubiovitz, JB, "<a href="#">Bias Bounty Programs as a Method of Combatting Bias in AI</a>," August 2018. Available at <a href="#">https://rubiovitz.com/2018/08/01/bias-bounty-programs-as-a-method-of-combatting</a>.</div>
+                </div>
+                
+            </div>
 
+            <div class="footnotes">
+                <div class="section-title">Author</div>
+                <div class="footnote-item">
+                    <div class="symbol"></div>
+                    <div>RABIc</a>.</div>
+                </div>
+            </div>
+            
+            <!-- References Section -->
+            <div class="references">
+                <div class="section-title">Acknowledgments</div>
+                
+                <div class="reference-item">
+                    <div class="number">1</div>
+                    <div>Contributors: John Schulman, Barret Zoph, Christina Kim, Jacob Hilton, Jacob Menick, Jiayi Weng, Juan Felipe Ceron Uribe, Liam Fedus, Luke Metz, Michael Pokorny, Rapha Gontijo Lopes, Shengjia Zhao, Arun Vijayvergiya, Eric Sigler, Adam Perelman, Chelsea Voss, Mike Heaton, Joel Parish, Dave Cummings, Rajeev Nayak, Valerie Balcom, David Schnurr, Tomer Kaftan, Chris Hallacy, Nicholas Turley, Noah Deutsch, Vik Goel, Jonathan Ward, Aris Konstantinidis, Wojciech Zaremba, Long Ouyang, Leonard Bogdonoff, Joshua Gross, David Medina, Sarah Yoo, Teddy Lee, Ryan Lowe, Dan Mossing, Joost Huizinga, Roger Jiang, Carroll Wainwright, Diogo Almeida, Steph Lin, Marvin Zhang, Kai Xiao, Katarina Slama, Steven Bills, Alex Gray, Jan Leike, Jakub Pachocki, Phil Tillet, Shantanu Jain, Greg Brockman, Nick Ryder, Alex Paino, Qiming Yuan, Clemens Winter, Ben Wang, Mo Bavarian, Igor Babuschkin, Szymon Sidor, Ingmar Kanitscheider, Mikhail Pavlov, Matthias Plappert, Nik Tezak, Heewoo Jun, William Zhuk, Vitchyr Pong, Lukasz Kaiser, Jerry Tworek, Andrew Carr, Lilian Weng, Sandhini Agarwal, Karl Cobbe, Vineet Kosaraju, Alethea Power, Stanislas Polu, Jesse Han, Raul Puri, Shawn Jain, Benjamin Chess, Christian Gibson, Oleg Boiko, Emy Parparita, Amin Tootoonchian, Kyle Kosic, Christopher Hesse</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    {% endblock body %}
 
     <div class="footer">
         <footer class="Tp__footer-main d-flex custom-conatiner">
@@ -178,7 +298,7 @@
     </div>
 
 
-    <script src="script.js"></script>
+    <script src="{% static "script.js" %}"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
@@ -191,3 +311,4 @@
 </body>
 
 </html>
+{% endblock html %}
