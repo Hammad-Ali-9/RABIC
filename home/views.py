@@ -19,6 +19,22 @@ def index(request):
     return render(request, 'index.html')
 
 
+def signup(request):
+    # context = {
+    #     "name":"hammad",
+    #     "section":"5B"
+    # }
+    if request.method == "POST":
+        username=request.POST.get("username")
+        email=request.POST.get("email")
+        pwd=request.POST.get("pwd")
+        signup = Signup(username=username,email=email,pwd=pwd,date=datetime.today())        
+        signup.save()   
+        return render(request, 'login.html')
+    
+    return render(request, 'signup.html')
+
+
 def login(request):
     error_message = None
     if request.method == "POST":

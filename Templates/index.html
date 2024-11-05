@@ -17,6 +17,7 @@
             padding: 53px;
             max-width: 1133px;
             margin: 0 auto;
+            border-radius: 17px;
         }
         
         #custom-section .button-container {
@@ -98,41 +99,9 @@
             </div>
         </div>
         <div class="navbutton" style=" right: 7vw; z-index: 1050;">
-            <!-- Button trigger modal for Sign Up -->
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#signupModal">
-                Sign Up
-            </button>
 
-            <!-- Sign Up Modal -->
-            <div class="modal fade" id="signupModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-                aria-labelledby="signupModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="signupModalLabel">Sign Up</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        
-                        <form class="mx-5 my-5" method="POST" action="/index">
-                            {% csrf_token %}
-                            <div class="mb-3">
-                                <label for="username" class="form-label">Username</label>
-                                <input type="username" name="username" class="form-control" id="username">
-                            </div>
-                            <div class="mb-3">
-                                <label for="exampleInputEmail1" class="form-label">Email address</label>
-                                <input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp">
-                            </div>
-                            <div class="mb-3">
-                                <label for="exampleInputPassword1" class="form-label">Password</label>
-                                <input type="password" name="pwd" id="pwd" class="form-control" id="exampleInputPassword1">
-                            </div>
-                            <button type="submit" class="btn btn-primary">Submit</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
             <!-- Button trigger modal for Login -->
+            <a class="btn btn-primary" href="{% url "signup" %}" role="button">SignUp</a>
             <a class="btn btn-secondary" href="{% url "login" %}" role="button">Login</a>
 
             {% comment %} <!-- Login Modal -->
@@ -166,7 +135,7 @@
     </nav>
 
 
-    {% block body %}
+{% block body %}
     <div class="hero">
         <div class="hero1">
             <h1>Analyze your data
@@ -241,7 +210,49 @@
         </div>
     </div>
     
-    {% endblock body %}
+    <div class="lastsec" style="max-width: 1133px; height: 53vh; background-color: #312e2e; margin: 70px; margin-left: 7.5vw; padding: 10px; border-radius: 17px;">
+        {% comment %} <div class="contlast" style="display: flex; padding: 15px; gap: 50px; margin-left: 7vw;">
+            <div class="card" style="width: 18rem;">
+                <img src="https://images.unsplash.com/photo-1589254065878-42c9da997008?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDZ8fHxlbnwwfHx8fHw%3D" class="card-img-top" alt="...">
+                <div class="card-body bg-transparent">
+                  <!-- <h5 class="card-title">Card title</h5>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
+                  <a href="#" class="btn btn-dark">Data Analysis</a>
+                </div>
+              </div>
+            <div class="card" style="width: 18rem;">
+                <img src="https://media.istockphoto.com/id/2170170558/photo/digital-human-concept-for-ai-metaverse-and-facial-recognition-technology.jpg?s=612x612&w=0&k=20&c=YVnGYKn3tGDtnR34J2fv9hnqlBZ2u9XX8oM7JbLkLgQ=" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <!-- <h5 class="card-title">Card title</h5>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
+                  <a href="#" class="btn btn-dark">Web Scraping</a>
+                </div>
+              </div>
+            <div class="card" style="width: 18rem;">
+                <img src="https://images.unsplash.com/photo-1677756119517-756a188d2d94?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDIzfHx8ZW58MHx8fHx8" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <!-- <h5 class="card-title">Card title</h5>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
+                  <a href="#" class="btn btn-dark">Data Exploration</a>
+                </div>
+              </div>
+        </div> {% endcomment %}
+        <div class="smain">
+            <div class="s1">
+                <button>Show More</button>
+            </div>
+            <div class="s2">
+                <img src="" alt="">
+                <button>Show More</button>
+            </div>
+            <div class="s3">
+                <img src="" alt="">
+                <button>Show More</button>
+            </div>
+        </div>
+    </div>
+
+{% endblock body %}
 
     <div class="footer">
         <footer class="Tp__footer-main d-flex custom-conatiner">

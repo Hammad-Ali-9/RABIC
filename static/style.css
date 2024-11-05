@@ -6,6 +6,7 @@
     box-sizing: border-box;
 }
 
+
 body, html {
     height: 100%;
     font-family: Arial, sans-serif;
@@ -62,6 +63,10 @@ a.logo:hover{
     text-decoration: none;
     font-size: 15px;
     transition: background-color 0.3s;
+}
+
+.Item_item__h59_f a:hover {
+    color: white;
 }
 
 .active {
@@ -140,4 +145,199 @@ a.logo:hover{
     text-decoration: none;
     flex-direction: row;
 }
+
+.smain{
+    height: 46vh;
+    width: 81vw;
+    display: flex;
+    gap: 20px;
+    padding-left: 20px;
+    padding-top: 10px;
+}
+
+.smain button{
+    background-color: rgb(0 0 0 / 59%);
+    border: 1px solid rgb(157 153 153);
+    padding: 3px;
+    color: white;
+    width: 116px;
+    height: 35px;
+    margin: 10px 10px 10px 36px;
+    border-radius: 14px;
+}
+
+.s1{
+    background-image: url("https://images.unsplash.com/photo-1589254065878-42c9da997008?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDZ8fHxlbnwwfHx8fHw%3D");
+    height: 46vh;
+    width: 25vw;
+    display: flex;
+    border-radius: 13px;
+    display: flex;
+    flex-direction: column-reverse;
+}
+.s2{
+    background-image: url("https://media.istockphoto.com/id/2170170558/photo/digital-human-concept-for-ai-metaverse-and-facial-recognition-technology.jpg?s=612x612&w=0&k=20&c=YVnGYKn3tGDtnR34J2fv9hnqlBZ2u9XX8oM7JbLkLgQ=");
+    height: 46vh;
+    width: 25vw;
+    display: flex;
+    border-radius: 13px;
+    display: flex;
+    flex-direction: column-reverse;
+}
+.s3{
+    background-image: url("https://images.unsplash.com/photo-1677756119517-756a188d2d94?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDIzfHx8ZW58MHx8fHx8");
+    height: 46vh;
+    width: 25vw;
+    display: flex;
+    border-radius: 13px;
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.communitymaincont{
+    background-color: #312e2e;
+    margin: 0px 80px;
+    width: 87vw;
+    height: 81vh;
+    border-radius: 10px;
+    display: flex;
+    padding: 15px;
+}
+
+.cmt1{
+    /* background-color: aliceblue; */
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 0.5px solid rgb(128, 125, 125);
+    width: 15vw;
+    height: 77vh;
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 27vh;
+}
+
+.a{
+    text-decoration: none;
+    margin-top: 10px;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.cmt1 a{
+    padding-left: 5px;
+    text-decoration: none;
+    color: #fff;
+    font-family: sans-serif;;
+}
+
+.cmt1 a:hover{
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 0.5px solid rgb(128, 125, 125);
+    padding: 3px;
+    border-radius: 5px;
+    color: white;
+}
+
+.imgandname{
+    display: flex;
+    gap: 10px;
+    padding-bottom: 5px;
+    border-bottom: 3px solid rgb(163, 163, 162);
+}
+
+.imgandname img, svg {
+    vertical-align: middle;
+    width: 36px;
+    height: 36px;
+    border-radius: 26px;
+}
+
+.cmt1-2{
+    justify-content: end;
+}
+
+.cmt1-2 .icons{
+    display: flex;
+    gap: 20px;
+    margin-top: 5px;
+}
+
+.cmt2{
+    /* background-color: #1e64a1; */
+    width: 70vw;
+    height: 77vh;
+    border-radius: 0px 10px 10px 0px;
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+}
+
+.cmt2-1{
+    width: 68vw;
+    height: 52vh;
+    border-radius: 10px;
+    display: flex;
+}
+
+
+.cmt2-1-1{
+    /* background-color: aliceblue; */
+    margin-top: 5px;
+    width: 28vw;
+    height: 44vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 2 columns */
+    grid-template-rows: auto auto;
+    gap: 5px;
+    padding: 5px;
+}
+
+.cmt2-1-1-1{
+    background-color: black;
+    width: 13vw;
+    border-radius: 10px;
+    height: 20vh;
+}
+
+.cmt2-1-1-2{
+    background-color: black;
+    width: 13vw;
+    border-radius: 10px;
+    height: 20vh;
+}
+
+.cmt2-1-1-3{
+    background-color: black;
+    width: 13vw;
+    border-radius: 10px;
+    height: 20vh;
+}
+
+.cmt2-1-1-4{
+    background-color: black;
+    width: 13vw;
+    border-radius: 10px;
+    height: 20vh;
+}
+
+.cmt2-1-2{
+    background-color: rgb(236, 221, 5);
+    width: 40vw;
+    height: 44vh;
+    border-radius: 10px;
+}
+
+.cmt2-2{
+    background-color: rgb(202, 23, 23);
+    width: 68vw;
+    height: 20vh;
+    border-radius: 10px;
+}
+
+
+
+
 
