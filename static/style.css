@@ -261,7 +261,7 @@ a.logo:hover{
 
 .cmt1-2 .icons{
     display: flex;
-    gap: 20px;
+    gap: 5px;
     margin-top: 5px;
 }
 
@@ -336,7 +336,6 @@ a.logo:hover{
     height: 20vh;
     border-radius: 10px;
 }
-
 
 
 

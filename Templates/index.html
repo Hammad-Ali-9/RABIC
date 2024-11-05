@@ -101,8 +101,9 @@
         <div class="navbutton" style=" right: 7vw; z-index: 1050;">
 
             <!-- Button trigger modal for Login -->
-            <a class="btn btn-primary" href="{% url "signup" %}" role="button">SignUp</a>
-            <a class="btn btn-secondary" href="{% url "login" %}" role="button">Login</a>
+            <a class="btn btn-primary" id="signup-btn" href="{% url "signup" %}" role="button" style="{{button_styles}}">SignUp</a>
+            <a class="btn btn-secondary" id="login-btn" href="{% url "login" %}" role="button" style="{{button_styles}}">Login</a>
+            <a class="btn btn-primary"  role="button" style="display: {% if button_display %} {{button_display}} {% else %} none {% endif %};">RABIc Is Here</a>
 
             {% comment %} <!-- Login Modal -->
 <!-- Login Modal -->
@@ -133,7 +134,6 @@
         </div>
         </div> {% endcomment %}
     </nav>
-
 
 {% block body %}
     <div class="hero">
