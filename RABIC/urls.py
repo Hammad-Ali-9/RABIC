@@ -26,5 +26,5 @@ admin.site.index_title = "RABIC"
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('home.urls')),
-    path('login/', views.login, name='login')
+    # path('login/', views.login, name='login')
 ]

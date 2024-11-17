@@ -402,41 +402,24 @@
         <main class="cb3653b48 login">
             <section class="c736b3d23 _prompt-box-outer c4d2132d2">
                 <div class="c0c0b103e c33caa3b3">
-
-
                     <div class="c55b4fd46">
                         <header class="c82483730 c17a6bb13">
                             <div title="Julius AI" id="custom-prompt-logo"
                                 style="width: auto !important; height: 60px !important; position: static !important; margin: auto !important; padding: 0 !important; background-color: transparent !important; background-position: center !important; background-size: contain !important; background-repeat: no-repeat !important">
                             </div>
-
-
                             <h1 class="cd6e96e3f cf08f4728">Welcome</h1>
-
-
                             <div class="cc7aae6d5 c313be041">
-
                                 <p class="c568d5063 cf8df368e">Sign Up | RABIc AI.</p>
-
                             </div>
                         </header>
 
                         <div class="ca8409a5b c3f8d855c">
-                            <form method="POST" action="signup">
+                            <form method="POST" action="signup" enctype="multipart/form-data">
                                 {% csrf_token %}
                                 <input type="hidden" name="username" id="username"
                                     value="hKFo2SBkUldERE8wVDBWdXQ4U3ZMX3NxMU1EcWdQb0JNZWh0aqFur3VuaXZlcnNhbC1sb2dpbqN0aWTZIEdad0NKR1RHeGVXNUo4R1BrdVowaDViSl8wdExqUV9ro2NpZNkgUVhUc1dEbHR5VEkxVnJSSE9RUlJmVHRHMWNmNFlESzg">
-
-
-
-
-
                                 <div class="cc784faa0 c0ec1b1c8">
                                     <div class="ce4ef53c1">
-
-
-
-
                                         <div class="input-wrapper _input-wrapper">
                                             <div class="c2a146493 caf438645 text c62bea4ac c88a45da2"
                                                 data-action-text="" data-alternate-action-text="">
@@ -475,12 +458,25 @@
                                                     Email*
                                                 </div>
                                             </div>
+                                        </div>
+
+                                        <div class="input-wrapper _input-wrapper">
+                                            <div class="c2a146493 caf438645 text c62bea4ac c88a45da2"
+                                                data-action-text="" data-alternate-action-text="">
+                                                <label class="c1fc42d63 no-js cf936859e c246e0deb" for="image">
+                                                    Profile Picture
+                                                </label>
+
+                                                <input style="padding-top: 13px;" class="input c2ed2fc72 c6f2c36d6" name="image" id="image" type="file" accept="image/*" required="">
+
+                                                {% comment %} <div class="c1fc42d63 js-required cf936859e c246e0deb"
+                                                    data-dynamic-label-for="email" aria-hidden="true">
+                                                    Profile Picture<span style="color: red;">*</span>
+                                                </div> {% endcomment %}
+                                            </div>
 
 
                                         </div>
-
-
-
 
                                         <div class="input-wrapper _input-wrapper">
                                             <div class="c2a146493 caf438645 password caef406c0 c88a45da2"
@@ -539,12 +535,6 @@
                                   <a class="c36d6c513 c3a49a52e" href="{% url "login" %}">Log in</a>
                                 </p>
                               </div>
-
-
-
-
-
-
                         </div>
                     </div>
                 </div>

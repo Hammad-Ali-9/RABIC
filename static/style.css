@@ -39,7 +39,7 @@ a.logo:hover{
 .navcenter {
     border-radius: 30px;
     transform: translateX(-50%);
-    width: 344px;
+    width: 320px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -335,6 +335,115 @@ a.logo:hover{
     width: 68vw;
     height: 20vh;
     border-radius: 10px;
+}
+
+
+/* -------------------------------------------------------------------------------------------- */
+/* Community Page css */
+
+.main_community_cont{
+    width: 82vw;
+    height: 74vh;
+    margin: -1vh 0px 9vh 8vw;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    /* background-color: #312e2e; */
+}
+
+.community_cont_1{
+    width: 14vw;
+    height: 78vh;
+    background-color: #312e2e;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    padding: 12px;
+}
+
+.community_left_a a{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    text-decoration: none;
+    padding-left: 5px;
+    text-decoration: none;
+    color: #dddddd;
+    font-family: sans-serif;
+
+}
+
+.community_left_a a:hover{
+    background-color: #198754;
+    border: 0.5px solid rgb(128, 125, 125);
+    padding: 3px;
+    border-radius: 5px;
+    color: white;
+}
+
+.community_left_a a:active{
+    background-color: #198754;
+    border: 0.5px solid rgb(128, 125, 125);
+    padding: 3px;
+    border-radius: 5px;
+    color: white;
+}
+
+.community_categories{
+    margin-top: 5px;
+    border-top: 2px solid gray;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.community_categories a{
+    text-decoration: none;
+    color: #dddddd;
+}
+
+.community_categories a:hover{
+    background-color: #198754;
+    padding: 3px;
+    border-radius: 5px;
+    color: white;
+}
+
+/* ---------------------------------------------------------------------------------- */
+
+.community_cont_2{
+    width: 68vw;
+    height: 78vh;
+    background-color: #292727ef;
+    border-radius: 10px;
+    overflow: scroll;
+}
+
+.community_cont_2::-webkit-scrollbar {
+    display: none;
+}
+
+.community_cont_2_head_main{
+    padding: 5px;
+    width: 65vw;
+    height: 8vh;
+    margin: 8px 0px 0px 9px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 7px;
+}
+
+.community_cont_2_head_1{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.community_table_heads{
+    margin: 12px 26px 0px 16px;
+    color: #dddddd;
 }
 
 

@@ -129,3 +129,17 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 STATICFILES_DIRS = [
     BASE_DIR, "static",
 ]
+
+
+# Use database-backed sessions
+SESSION_ENGINE = 'django.contrib.sessions.backends.db'
+
+# Session expiry settings
+SESSION_COOKIE_AGE = 1209600  # 2 weeks (in seconds)
+SESSION_EXPIRE_AT_BROWSER_CLOSE = False  # Set to True to expire when the browser closes
+
+# Secure cookie settings
+SESSION_COOKIE_SECURE = False  # Use True in production with HTTPS
+SESSION_COOKIE_HTTPONLY = True
+
+

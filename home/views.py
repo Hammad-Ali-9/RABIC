@@ -1,3 +1,4 @@
+import os
 from django.shortcuts import render, HttpResponse, redirect
 from datetime import datetime
 from django.core.exceptions import ValidationError
@@ -5,20 +6,10 @@ from home.models import Signup
 from django.contrib.auth import authenticate, login, logout
 # Create your views here.
 
-def index(request):
-    # context = {
-    #     "name":"hammad",
-    #     "section":"5B"
-    # }
-    if request.method == "POST":
-        username=request.POST.get("username")
-        email=request.POST.get("email")
-        pwd=request.POST.get("pwd")
-        signup = authenticate(username=username,email=email,pwd=pwd,date=datetime.today())        
-        signup.save()   
-        
-    return render(request, 'index.html')
-
+global button_display
+global button_styles# Declare global variables to modify
+button_display = "display: block;"  # Modify the value
+button_styles = "none"
 
 def signup(request):
     error_message = "User already exists with this email."
@@ -26,6 +17,8 @@ def signup(request):
     if request.method == "POST":
         username = request.POST.get("username")
         email = request.POST.get("email")
+        image = request.FILES.get("image")
+        # print(image)
         pwd = request.POST.get("pwd")
         
         try:
@@ -33,7 +26,7 @@ def signup(request):
             return render(request, 'signup.html', {'error_message': error_message})
         
         except Signup.DoesNotExist:
-            signup = Signup(username=username, email=email, pwd=pwd, date=datetime.today())
+            signup = Signup(username=username, email=email, pwd=pwd, image=image, date=datetime.today())
             signup.save()
             return render(request, 'login.html')  
 
@@ -41,21 +34,22 @@ def signup(request):
 
 
 def login(request):
-    button_display="block"
-    button_styles="display: none;"
+  # Modify the value
     error_message = None
     if request.method == "POST":
         username = request.POST.get('username')
         password = request.POST.get('password')
-
-        try:
+        
+        try:  
             user = Signup.objects.get(username=username)
-            if user.pwd == password:
+            if user.username==username and user.pwd == password:
+                # Signup.objects.all().delete()
                 request.session['password'] = user.pwd
-                request.session['username'] = user.username
-                print(username)
-                
-                return render(request, 'index.html', {'button_styles': button_styles, 'button_display': button_display, 'username': username})  # Redirect to index page on success
+                request.session['username'] = user.username       
+                request.session['id'] = user.id       
+                # image = (user.image.url if user.image else None)
+                # print(image+" here is the url")
+                return render(request, 'index.html', {'button_styles': button_styles, 'button_display': button_display, 'username': username, 'image': user.image.url})  # Redirect to index page on success
             else:
                 error_message="Invalid username or password."
                 return render(request, 'login.html', {'error_message': error_message})
@@ -64,11 +58,55 @@ def login(request):
 
     return render(request, "login.html", {'error_message': error_message})
 
-def docs(request):
-    return render(request, 'docs.html')
+def index(request):     
+    id = request.session.get('id')
+    if id:
+        user=Signup.objects.get(id=id)
+        # print(username+" for docs")
+        # button_styles = "display: block;"
+        return render(request, 'index.html', {'button_styles': button_styles, 'button_display': button_display, 'username': user.username, 'image': user.image}) 
+    else:
+        return render(request, 'index.html') 
 
+def docs(request):
+    id = request.session.get('id')
+    if id:
+        user=Signup.objects.get(id=id)
+        # print(username+" for docs")
+        # button_styles = "display: block;"
+        return render(request, 'docs.html', {'button_styles': button_styles, 'button_display': button_display, 'username': user.username, 'image': user.image}) 
+    else:
+        return render(request, 'docs.html') 
+
+def dashboard(request):
+    id = request.session.get('id')
+    if id:
+        user=Signup.objects.get(id=id)
+        # print(username+" for docs")
+        # button_styles = "display: block;"
+        return render(request, 'dashboard.html', {'username': user.username, 'image': user.image}) 
+    else:
+        return render(request, 'dashboard.html') 
+    
 def community(request):
-    return render(request, 'community.html')
+    id = request.session.get('id')
+    if id:
+        user=Signup.objects.get(id=id)
+        # print(username+" for docs")
+        # button_styles = "display: block;"
+        return render(request, 'community.html', {'button_styles': button_styles, 'button_display': button_display, 'username': user.username, 'image': user.image}) 
+    else:
+        return render(request, 'community.html') 
+    
+def contact(request):
+    id = request.session.get('id')
+    if id:
+        user=Signup.objects.get(id=id)
+        # print(username+" for docs")
+        # button_styles = "display: block;"
+        return render(request, 'contact.html', {'button_styles': button_styles, 'button_display': button_display, 'username': user.username, 'image': user.image}) 
+    else:
+        return render(request, 'contact.html') 
 # def signup(request):
 #     return HttpResponse("Signup page")
 
