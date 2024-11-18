@@ -58,6 +58,10 @@ def login(request):
 
     return render(request, "login.html", {'error_message': error_message})
 
+def logout(request):
+    request.session.flush()
+    return render(request, 'index.html')
+
 def index(request):     
     id = request.session.get('id')
     if id:

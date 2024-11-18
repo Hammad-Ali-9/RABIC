@@ -100,7 +100,7 @@
         <div class="navbutton" style=" right: 7vw; z-index: 1050;">
 
             <!-- Button trigger modal for Login -->
-            <a class="btn btn-primary" id="signup-btn" href="{% url "signup" %}" role="button" style="display: {{button_styles}};">SignUp</a>
+            <a class="btn btn-success" id="signup-btn" href="{% url "signup" %}" role="button" style="display: {{button_styles}};">SignUp</a>
             <a class="btn btn-secondary" id="login-btn" href="{% url "login" %}" role="button" style="display: {{button_styles}};">Login</a>
             {% comment %} <a class="btn btn-primary"  role="button" style="display: {% if button_display %} {{button_display}} {% else %} none {% endif %};">RABIc Is Here</a> {% endcomment %}
             <!-- Example single danger button -->
@@ -114,7 +114,11 @@
                 <li><a class="dropdown-item" href="#">Payments</a></li>
                 <li><a class="dropdown-item" href="#">-----</a></li>
                 <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="#">LogOut</a></li>
+                <li><form style="margin-left: 10px;"  action="{% url 'logout' %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger">Logout</button>
+                </form>
+                </li>
                 </ul>
             </div>
 
