@@ -12,5 +12,6 @@ urlpatterns = [
     path('community', views.community, name='community'),
     path('contact', views.contact, name='contact'),
     path('dashboard', views.dashboard, name='dashboard'),
-    path('logout', views.logout, name='logout')
+    path('logout', views.logout, name='logout'),
+    path('submit_post', views.submit_post, name='submit_post')
 ]

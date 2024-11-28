@@ -1,17 +1,18 @@
 @import url('https://fonts.cdnfonts.com/css/bebas-neue');
 @import url('https://fonts.cdnfonts.com/css/poppins');
-* {
+*{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
 
-body, html {
+body{
     height: 100%;
     font-family: Arial, sans-serif;
     overflow-x: hidden; /* Prevent horizontal scrolling */
     scroll-behavior: smooth; /* Smooth scroll effect */
+    background-color: #002bff;
 }
 
 nav {
@@ -447,5 +448,585 @@ a.logo:hover{
 }
 
 
+/* ------------------------------Testimonials ------------------------------------------------ */
+
+.testimonials{
+    height: auto;
+    background-color: #002bff;
+    background: url(Images/Star\ 3.png), url(images/Polygon\ 9.png);
+    background-repeat: no-repeat;
+    background-size: 50% 75%, 40% 70%;
+    background-position: top left, top right;
+    /* margin-top: 7vh; */
+    display: flex;
+    flex-direction: column;
+    /* gap: 50px; */
+}
+
+.testimonials:hover{
+    animation: bounce 2s ease;
+}
+
+/* Bounce Keyframes */
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-15px);
+    }
+}
+
+.testimonials h1{
+    font-family: "Manrope", sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 48px;
+    line-height: 55%;
+    text-align: center;
+    background: linear-gradient(90deg, #050CB0, #E33E7C);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    padding: 7px 0 18px 0;
+}
+
+.testimonials p{
+    /* width: 979px;
+    height: 40px; */
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 27px;
+    /* text-align: center; */
+    color: #AAAAAA;
+    flex: none;
+    order: 1;
+    align-self: stretch;
+    flex-grow: 0;
+
+}
+
+.testimonials .comments-slider{
+        /* Frame 1566662606 */
+
+    /* Auto layout */
+    display: flex;
+    flex-direction: column;
+    padding: 0px;
+    gap: 15px;
+
+    height: auto;
+    overflow: hidden;
+    margin-top: 8vh;
+    /* margin-bottom: 20px; */
+    /* background-color: #002bff; */
+
+}
+
+.testimonials .comments-slider1{
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    margin-left: -350px;
+    animation-play-state: paused;
+}
+
+.testimonials .comments-slider2{
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    margin-left: -640px;
+    animation-play-state: paused;
+}
+
+.testimonials .comment {
+    box-sizing: border-box;
+    display: flex
+;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 25px 15px;
+    /* gap: 2px; */
+    width: 381px;
+    height: 0px;
+    background: #0D0D0D;
+    border: 1px solid #1A1A1A;
+    border-radius: 8px;
+    flex: 0 0 auto;
+    order: 2;
+    flex-grow: 0;
+    /* transition: transform 0.5s ease; */
+}
+
+.comments-slider1, .comments-slider2 {
+    transition: transform 1s ease-in-out;
+}
+
+/* .comments-slider2{
+    transition: transform 5s ease-in-out;
+} */
+
+/* Keyframe for the first slider to slide left */
+@keyframes slide-left {
+    0% {
+        transform: translateX(0);
+    }
+    50% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+/* Keyframe for the second slider to slide right */
+@keyframes slide-right {
+    0% {
+        transform: translateX(0);
+    }
+    50% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+/* Control when the animation should run on hover */
+.comments-slider:hover .comments-slider1 {
+    animation: slide-left 70s infinite; /* First slider moves left */
+}
+
+.comments-slider:hover .comments-slider2 {
+    animation: slide-right 70s infinite; /* Second slider moves right */
+}
+
+.comment .image-name{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px; gap: 10px;
+
+    width: 185.72px;
+    height: 60px;
 
 
+    /* Inside auto layout */
+    flex: none;
+    order: 0;
+    align-self: stretch;
+    flex-grow: 0;
+}
+
+.name-date{
+    /* Frame 1566662597 */
+
+    /* Auto layout */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    color: #ffffff;
+    font-family: "Manrope", sans-serif;
+    /* Inside auto layout */
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+
+}
+
+.name-date h3{
+    font-weight:400;
+}
+
+.comment .reviews{
+        /* Img - Rated 5 out of 5 */
+
+    width: auto;
+    height: 25px;
+    display: flex;
+    flex-direction: row;
+
+    /* Inside auto layout */
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+
+}
+
+.comment p{
+    /* width: 469px; */
+    /* height: 106px; */
+    font-family: "Manrope", sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 17px;
+    color: #A9A9A9;
+    flex: none;
+    order: 1;
+    align-self: stretch;
+    flex-grow: 0;
+    margin-top: -15px;
+}
+
+.carousel-track {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    width: calc(300px * 4); /* Adjust for the total slides (including duplicate) */
+  }
+
+.carousel-track1 {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    width: calc(300px * 2); /* Adjust for the total slides (including duplicate) */
+  }
+
+
+/* ------------------------------------Subscribe---------------------------------------------------- */
+
+.subscribe{
+    height: 377px;
+    background-image: url(Images/removal\ 2.png);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    /* opacity: 15%; */
+}
+
+.subscribe .inside{
+    box-sizing: border-box;
+
+    position: absolute;
+    overflow: hidden;
+    width: 80%;
+    height: 210px;
+    background: linear-gradient(90deg, rgba(26, 26, 26, 0.8) 0%, rgba(20, 20, 20, 0.72) 29.5%, rgba(20, 20, 20, 0.72) 70.5%, rgba(26, 26, 26, 0.8) 100%);
+    border: 0.949194px solid #2A2A2A;
+    border-radius: 11.3903px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.subscribe-content{
+    position: absolute;
+    /* width: auto;
+    height: auto; */
+    /* left: 75.94px;
+    top: 70px; */
+    
+    /* background-color: #002bff; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 2vh;
+    align-items: center;
+    margin: 60px;
+}
+
+.left h2{
+    font-family: "Manrope", sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 2.2rem;
+    line-height: 150%;
+    color: #FFFFFF;
+}
+
+.left{
+    margin-left: 20px;
+}
+
+.left p{
+    font-family: "Poppins", sans-serif;
+    font-style: normal;
+    font-weight: 200;
+    font-size: 15.1871px;
+    line-height: 19px;
+    color: #DADADA;
+    /* width: 24vw; */
+}
+
+
+.right{
+    width: auto;
+    height: auto;
+    /* left: 592.3px;
+    top: 80.68px; */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(10, 10, 10, 0.8);
+    border-radius: 11.3903px;
+}
+
+form{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 2px;
+}
+
+.right #p{
+    background: none;
+    border: none;
+    font-family: "Poppins", sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15.1871px;
+    line-height: 19px;
+    color: #5A5A5A;
+}
+
+/* input[type="email"]{
+    margin-left: 2vw;
+    width: 300px;
+} */
+
+input[type="email"]:focus {
+    border: none; /* Remove border on focus */
+    outline: none; /* Ensure no outline appears */
+}
+
+.right #a{
+    width: 9rem;
+    height: 4rem;
+    background: #1A1A1A;
+    border-radius: 11.3903px;
+    margin-left: 20px;
+
+
+    display: flex;
+    font-family: "Manrope", sans-serif;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 15.1871px;
+    line-height: 19px;
+    text-decoration: none;
+    color: #FFFFFF;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+
+/* .right #a:hover{
+    background: #570808;
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
+} */
+
+.right #a::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    background-color: rgba(255, 255, 255, 0.3);
+    transition: all 0.5s ease-out;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.right #a:hover {
+    transform: scale(1.1) translateY(-5px); /* Scaling and slight lift on hover */
+    background: linear-gradient(45deg, #8b1a09, #570808); /* Swap gradient direction */
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2); /* Enhanced shadow for depth */
+}
+
+.right #a::before {
+    width: 0;
+    height: 0;
+    opacity: 0;
+}
+
+.btn:focus {
+    outline: none;
+}
+
+.table{
+    /* border: 1px solid #dddddd; */
+    max-width: 65vw;
+    margin: 20px 0 0 15px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 18px;
+    text-align: left;
+}
+th, td {
+    padding: 12px;
+    color: #dddddd;
+}
+thead{
+    border: 2px solid white;
+
+}
+th {
+    /* background-color: #f4f4f4; */
+}
+tbody tr:hover {
+    background-color: #1111113f;
+}
+.post-box {
+    font-weight: bold;
+}
+.post-box span {
+    display: block;
+    margin: 5px 0;
+    font-weight: normal;
+}
+
+
+/* Add your provided CSS styles here */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+label {
+    text-align: left;
+    font-size: 14px;
+    color: #6c757d;
+}
+
+input, textarea, select {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+input:focus, textarea:focus, select:focus {
+    outline: none;
+    border-color: #198754;
+}
+
+.btn-continue {
+    background-color: #198754;
+    color: white;
+    border: none;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-continue:hover {
+    background-color: #157347;
+}
+
+
+/* -----------------------------element 1 ------------------------ */
+
+.element1{
+    height: auto;
+    /* width: 80vw; */
+    /* background-color: #002bff; */
+    display: flex;
+    flex-direction: row;
+    /* gap: 5vw; */
+    /*border: 2px solid red;*/
+    /* margin-left: 8.5vw; */
+    justify-content: center;
+}
+
+.elem-1{
+    width: auto;
+    /* margin-top: 20px; */
+    display: flex;
+    flex-direction: column;
+}
+
+.elem-1 span{
+    background: linear-gradient(90deg, #5A53FF 0%, #CF52FF 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-size: 1.1rem;
+    line-height: 140%;
+    font-weight: 100;
+    letter-spacing: normal;
+    font-family: "Manrope", sans-serif;
+    font-weight: bold;
+}
+
+.img-gradient-head h3{
+    font-family: "Manrope", sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 25px;
+    line-height: 39px;
+    display: flex;
+    align-items: center;
+
+    background: linear-gradient(90deg, #5A53FF 0%, #CF52FF 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.element1 h2{
+    /* margin-right: 14vw; */
+    width: 500px;
+    margin-bottom: 4vh;
+    /* margin-top: 4vh; */
+    font-size: 2.3rem;
+    font-family: "Manrope", sans-serif;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+.elem-1 p{
+    width: 660px;
+    /* margin-bottom: 4vh; */
+    line-height: 5px;
+    color: #ffffff;
+    font-size: 15px;
+    line-height: 140%;
+    font-weight: 100;
+    letter-spacing: normal;
+    font-family: "Manrope", sans-serif;
+}
+
+
+.elem1-button{
+    width: 9.5rem; /* Use rem for scalable width */
+    height: 3rem;
+    font-size: 14px;
+}
+
+.elem-2 img {
+    position: relative;
+    width: 80%;
+    height: 80%;
+    animation: float 2s ease-in-out infinite;
+    left: 85px;
+    top: 20px;
+}
+
+/* Floating Animation */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0); /* Start at the original position */
+    }
+    50% {
+        transform: translateY(-20px); /* Move up slightly */
+    }
+}

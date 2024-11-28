@@ -2,7 +2,7 @@ import os
 from django.shortcuts import render, HttpResponse, redirect
 from datetime import datetime
 from django.core.exceptions import ValidationError
-from home.models import Signup
+from home.models import Signup, CommunityPost, Tag
 from django.contrib.auth import authenticate, login, logout
 # Create your views here.
 
@@ -19,7 +19,7 @@ def signup(request):
         email = request.POST.get("email")
         image = request.FILES.get("image")
         # print(image)
-        pwd = request.POST.get("pwd")
+        pwd = request.POST.get("password")
         
         try:
             user = Signup.objects.get(email=email)
@@ -55,8 +55,9 @@ def login(request):
                 return render(request, 'login.html', {'error_message': error_message})
         except Signup.DoesNotExist:
             error_message = "Invalid username or password"
+            return render(request, 'login.html', {'error_message': error_message})
 
-    return render(request, "login.html", {'error_message': error_message})
+    return render(request, "login.html")
 
 def logout(request):
     request.session.flush()
@@ -91,46 +92,66 @@ def dashboard(request):
         return render(request, 'dashboard.html', {'username': user.username, 'image': user.image}) 
     else:
         return render(request, 'dashboard.html') 
+ 
+
+def submit_post(request):
+    if request.method == 'POST':
+        # Retrieve data from the form
+        topic = request.POST.get('topic')
+        category = request.POST.get('category')
+        content = request.POST.get('content')
+        tags_input = request.POST.get('tags', '')
+
+        # Retrieve the Signup instance for the logged-in user using session['id']
+        try:
+            user_signup = Signup.objects.get(id=request.session['id'])  # Get the Signup instance using the stored session ID
+        except Signup.DoesNotExist:
+            # Handle case where no Signup instance is found
+            return redirect('error_page')  # Or handle it in a way that suits your logic
+
+        # Create a new CommunityPost and associate it with the Signup instance
+        post = CommunityPost.objects.create(
+            topic=topic,
+            category=category,
+            content=content,
+            Signup=user_signup  # Assign the Signup instance to the post
+        )
+
+        # Handle tags if they were provided
+        if tags_input:
+            tags = [tag.strip() for tag in tags_input.split(',')]
+            for tag_name in tags:
+                # Get or create the tag in the Tag model
+                tag, created = Tag.objects.get_or_create(name=tag_name)
+                # Add the tag to the post
+                post.tags.add(tag)
+
+        # Redirect to the community page or another page after saving
+        return redirect('community')  # Adjust to your view name
+
+    # If not a POST request, render the form to submit the post
+    return render(request, 'community.html')
+
     
 def community(request):
-    id = request.session.get('id')
-    if id:
+    try:
+        id = request.session.get('id')
+        posts = CommunityPost.objects.all().order_by('-activity_time') 
+        
         user=Signup.objects.get(id=id)
-        # print(username+" for docs")
-        # button_styles = "display: block;"
-        return render(request, 'community.html', {'button_styles': button_styles, 'button_display': button_display, 'username': user.username, 'image': user.image}) 
-    else:
-        return render(request, 'community.html') 
-    
+        return render(request, 'community.html', {'button_styles': button_styles, 'button_display': button_display, 'username': user.username, 'image': user.image, 'posts': posts}) 
+    except:
+        return render(request, 'community.html')
+
 def contact(request):
     id = request.session.get('id')
     if id:
         user=Signup.objects.get(id=id)
+        
+        # We will implemet lists here to store data in it for the sorting and displaying in the coomunity table
+        
         # print(username+" for docs")
         # button_styles = "display: block;"
         return render(request, 'contact.html', {'button_styles': button_styles, 'button_display': button_display, 'username': user.username, 'image': user.image}) 
     else:
         return render(request, 'contact.html') 
-# def signup(request):
-#     return HttpResponse("Signup page")
-
-# def contact(request):
-#     if request.method == "POST":
-#         name=request.POST.get("name")
-#         email=request.POST.get("email")
-#         phone=request.POST.get("phone")
-#         address=request.POST.get("address")
-#         city=request.POST.get("city")
-#         zip=request.POST.get("zip")
-#         contact = Contact(
-#             name=name,
-#             email=email,
-#             phone=phone,
-#             address=address,
-#             city=city,
-#             zip=zip,  # Correct variable name
-#             date=datetime.today())        
-#         contact.save()
-        
-#     return render(request, 'contact.html')
-#     # return HttpResponse("contact page")
