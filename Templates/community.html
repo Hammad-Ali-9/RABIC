@@ -26,9 +26,9 @@
                         Categories
                     </button>
                     <ul class="dropdown-menu">
-                        <li><button class="dropdown-item" type="button">Action</button></li>
-                        <li><button class="dropdown-item" type="button">Another action</button></li>
-                        <li><button class="dropdown-item" type="button">Something else here</button></li>
+                        {% for category in categories %}
+                        <li><button class="dropdown-item category-filter" data-category="{{ category.name }}" type="button">{{ category.name }}</button></li>
+                        {% endfor %}
                     </ul>
                 </div>
                 <div class="dropdown">
@@ -36,10 +36,12 @@
                         Tags
                     </button>
                     <ul class="dropdown-menu">
-                        <li><button class="dropdown-item" type="button">#rowsearch</button></li>
+                        {% for tag in all_tags %}
+                        <li><button class="dropdown-item tag-filter" data-tag="{{ tag.name }}" type="button">#{{ tag.name }}</button></li>
+                        {% endfor %}
                     </ul>
                 </div>
-                <button type="button" class="btn btn-outline-success">Top</button>
+                <button type="button" class="btn btn-outline-success sort-by-top">Top</button>
             </div>
             <div>
                 <!-- Button trigger modal -->
@@ -63,7 +65,11 @@
                                 <input type="text" id="topic" name="topic" placeholder="Enter the topic" required>
                                 
                                 <label for="category">Category*</label>
-                                <input type="text" id="category" name="category" placeholder="Enter the category" required>
+                                <select id="category" name="category" required>
+                                    {% for category in categories %}
+                                    <option value="{{ category.name }}">{{ category.name }}</option>
+                                    {% endfor %}
+                                </select>
                                 
                                 <label for="content">Content*</label>
                                 <textarea id="content" name="content" placeholder="Write your content here" rows="5" required></textarea>

@@ -1,95 +1,223 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    {% load static %}
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>RABIc | {% block title %}YOUR AI Data Analyst{% endblock title %}</title>
-    <link rel="stylesheet" href="{% static 'style.css'%}">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-</head>
-<body>
-    <nav>  
-        <a href="/" class="logo">RABIc</a>
-        <div class="navcenter">
-            <div class="Item_item__h59_f active" style="opacity:1;transform:none">
-                <a href="{% url "index" %}">Home</a>
-            </div>
-            <div class="Item_item__h59_f" style="opacity:1;transform:none">
-                <a href="{% url "docs" %}">Docs</a>
-            </div>
-            <div class="Item_item__h59_f" style="opacity:1;transform:none">
-                <a href="{% url "community" %}">Community</a>
-            </div>
-        </div>
-    </nav>
-        
+{% extends "index.html" %}
+{% load static %}
+{% block title %}Dashboard{% endblock title %}
+
 {% block body %}
-    <div class="communitymaincont">
-        <div class="cmt1">
-            <div class="cmt1-1">
-                <div class="imgandname">
-                    <img src="{{image}}" alt="">
-                    <h1 style="color: white; font-family: 'Bebas Neue', sans-serif; font-size: 20px; padding-top: 5px;">{{username}}</h1>
-                </div>
-                <div class="a">
-                    <a href="">Profile</a>
-                    <a href="">Usage</a>
-                    <a href="">My Workflows</a>
-                    <a href="">My Files</a>
-                    <a href="">History</a>
-                </div>
-            </div>
-            <div class="cmt1-2">
-                <a href="">Upgrade</a>
-                <div class="icons">
-                    <a href="https://discord.gg/ZfwFgwwz">
-                    <svg xmlns="https://discord.gg/ZfwFgwwz" x="0px" y="0px" width="100" height="100" viewBox="0 0 50 50">
-                        <path d="M 41.625 10.769531 C 37.644531 7.566406 31.347656 7.023438 31.078125 7.003906 C 30.660156 6.96875 30.261719 7.203125 30.089844 7.589844 C 30.074219 7.613281 29.9375 7.929688 29.785156 8.421875 C 32.417969 8.867188 35.652344 9.761719 38.578125 11.578125 C 39.046875 11.867188 39.191406 12.484375 38.902344 12.953125 C 38.710938 13.261719 38.386719 13.429688 38.050781 13.429688 C 37.871094 13.429688 37.6875 13.378906 37.523438 13.277344 C 32.492188 10.15625 26.210938 10 25 10 C 23.789063 10 17.503906 10.15625 12.476563 13.277344 C 12.007813 13.570313 11.390625 13.425781 11.101563 12.957031 C 10.808594 12.484375 10.953125 11.871094 11.421875 11.578125 C 14.347656 9.765625 17.582031 8.867188 20.214844 8.425781 C 20.0625 7.929688 19.925781 7.617188 19.914063 7.589844 C 19.738281 7.203125 19.34375 6.960938 18.921875 7.003906 C 18.652344 7.023438 12.355469 7.566406 8.320313 10.8125 C 6.214844 12.761719 2 24.152344 2 34 C 2 34.175781 2.046875 34.34375 2.132813 34.496094 C 5.039063 39.605469 12.972656 40.941406 14.78125 41 C 14.789063 41 14.800781 41 14.8125 41 C 15.132813 41 15.433594 40.847656 15.621094 40.589844 L 17.449219 38.074219 C 12.515625 36.800781 9.996094 34.636719 9.851563 34.507813 C 9.4375 34.144531 9.398438 33.511719 9.765625 33.097656 C 10.128906 32.683594 10.761719 32.644531 11.175781 33.007813 C 11.234375 33.0625 15.875 37 25 37 C 34.140625 37 38.78125 33.046875 38.828125 33.007813 C 39.242188 32.648438 39.871094 32.683594 40.238281 33.101563 C 40.601563 33.515625 40.5625 34.144531 40.148438 34.507813 C 40.003906 34.636719 37.484375 36.800781 32.550781 38.074219 L 34.378906 40.589844 C 34.566406 40.847656 34.867188 41 35.1875 41 C 35.199219 41 35.210938 41 35.21875 41 C 37.027344 40.941406 44.960938 39.605469 47.867188 34.496094 C 47.953125 34.34375 48 34.175781 48 34 C 48 24.152344 43.785156 12.761719 41.625 10.769531 Z M 18.5 30 C 16.566406 30 15 28.210938 15 26 C 15 23.789063 16.566406 22 18.5 22 C 20.433594 22 22 23.789063 22 26 C 22 28.210938 20.433594 30 18.5 30 Z M 31.5 30 C 29.566406 30 28 28.210938 28 26 C 28 23.789063 29.566406 22 31.5 22 C 33.433594 22 35 23.789063 35 26 C 35 28.210938 33.433594 30 31.5 30 Z"></path>
-                        </svg>
-                    <a/>
-
-                    <a href="https://www.linkedin.com/in/hammad-ali-062b46281/">
-                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0 0 50 50">
-                        <path d="M 11 4 C 7.134 4 4 7.134 4 11 L 4 39 C 4 42.866 7.134 46 11 46 L 39 46 C 42.866 46 46 42.866 46 39 L 46 11 C 46 7.134 42.866 4 39 4 L 11 4 z M 13.085938 13 L 21.023438 13 L 26.660156 21.009766 L 33.5 13 L 36 13 L 27.789062 22.613281 L 37.914062 37 L 29.978516 37 L 23.4375 27.707031 L 15.5 37 L 13 37 L 22.308594 26.103516 L 13.085938 13 z M 16.914062 15 L 31.021484 35 L 34.085938 35 L 19.978516 15 L 16.914062 15 z"></path>
-                        </svg>
-                    <a/>
-
-                    <a href="https://www.reddit.com/user/MixAccording2265/">
-                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0 0 48 48">
-                        <path fill="#64717c" d="M24,18c-0.552,0-1-0.448-1-1c0-2.815,0.36-12,5-12c1.173,0,2.037,0.676,2.872,1.331	C31.919,7.151,33.002,8,35,8h4c0.552,0,1,0.448,1,1s-0.448,1-1,1h-4c-2.688,0-4.233-1.211-5.362-2.095C28.922,7.344,28.46,7,28,7	c-1.738,0-3,4.206-3,10C25,17.552,24.552,18,24,18z"></path><radialGradient id="PTH08zocUYAZh7xvCE~aha_h3FOPWMfgNnV_gr1" cx="36.257" cy="27.553" r="11.69" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#bbc1c4"></stop><stop offset=".652" stop-color="#bbc1c4"></stop><stop offset=".74" stop-color="#c1c7c9"></stop><stop offset=".861" stop-color="#d3d6d8"></stop><stop offset="1" stop-color="#f0f0f0"></stop></radialGradient><circle cx="40" cy="22" r="5" fill="url(#PTH08zocUYAZh7xvCE~aha_h3FOPWMfgNnV_gr1)"></circle><radialGradient id="PTH08zocUYAZh7xvCE~ahb_h3FOPWMfgNnV_gr2" cx="36.257" cy="27.553" r="11.69" gradientTransform="matrix(-1 0 0 1 48 0)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#bbc1c4"></stop><stop offset=".652" stop-color="#bbc1c4"></stop><stop offset=".74" stop-color="#c1c7c9"></stop><stop offset=".861" stop-color="#d3d6d8"></stop><stop offset="1" stop-color="#f0f0f0"></stop></radialGradient><circle cx="8" cy="22" r="5" fill="url(#PTH08zocUYAZh7xvCE~ahb_h3FOPWMfgNnV_gr2)"></circle><linearGradient id="PTH08zocUYAZh7xvCE~ahc_h3FOPWMfgNnV_gr3" x1="24" x2="24" y1="14.955" y2="42.955" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#f0f0f0"></stop><stop offset="1" stop-color="#bbc1c4"></stop></linearGradient><ellipse cx="24" cy="29" fill="url(#PTH08zocUYAZh7xvCE~ahc_h3FOPWMfgNnV_gr3)" rx="19" ry="14"></ellipse><path fill="#d43a02" d="M30,23c-1.656-0.001-2.999,1.341-3,2.998c-0.001,1.656,1.341,2.999,2.998,3c0.001,0,0.002,0,0.002,0	c1.656,0.001,2.999-1.341,3-2.998c0.001-1.656-1.341-2.999-2.998-3C30.002,23,30.001,23,30,23z"></path><path fill="#d43a02" d="M18,23c-1.656-0.001-2.999,1.341-3,2.998c-0.001,1.656,1.341,2.999,2.998,3c0.001,0,0.002,0,0.002,0	c1.656,0.001,2.999-1.341,3-2.998c0.001-1.656-1.341-2.999-2.998-3C18.002,23,18.001,23,18,23z"></path><path fill="#64717c" d="M24.002,34.902c-3.252,0-6.14-0.745-8.002-1.902c1.024,2.044,4.196,4,8.002,4	c3.802,0,6.976-1.956,7.998-4C30.143,34.157,27.254,34.902,24.002,34.902z"></path><linearGradient id="PTH08zocUYAZh7xvCE~ahd_h3FOPWMfgNnV_gr4" x1="36.995" x2="41.392" y1="6.995" y2="11.392" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#f0f0f0"></stop><stop offset="1" stop-color="#bbc1c4"></stop></linearGradient><circle cx="39" cy="9" r="3" fill="url(#PTH08zocUYAZh7xvCE~ahd_h3FOPWMfgNnV_gr4)"></circle>
-                        </svg>
-                    <a/>
-                </div>
-            </div>
+<div class="dashboard-container">
+    <!-- Left Sidebar -->
+    <div class="dashboard-sidebar">
+        <div class="user-profile">
+            <img src="{{ image.url }}" alt="Profile Picture" class="profile-pic">
+            <h3>{{ username }}</h3>
         </div>
-        <div class="cmt2">
-            <h1 style="color: white; font-family: 'Bebas Neue', sans-serif; font-size: 31px;">Lets bring your DATa to life.</h1>
-            <div class="cmt2-1">
-                <div class="cmt2-1-1">
-                    <div class="cmt2-1-1-1"></div>
-                    <div class="cmt2-1-1-2"></div>
-                    <div class="cmt2-1-1-3"></div>
-                    <div class="cmt2-1-1-4"></div>
-                </div>
-                <div class="cmt2-1-2"></div>
-            </div>
-            <div class="cmt2-2"></div>
+        <div class="dashboard-nav">
+            <a href="#profile">Profile</a>
+            <a href="#usage">Usage</a>
+            <a href="#workflows">My Workflows</a>
+            <a href="#files">My Files</a>
+            <a href="#history">History</a>
+            <a href="#upgrade" class="upgrade-link">Upgrade</a>
+            {% comment %} <div class="social-links">
+                <a href="#discord"><img src="{% static 'icons/discord.png' %}" alt="Discord"></a>
+                <a href="#twitter"><img src="{% static 'icons/twitter.png' %}" alt="Twitter"></a>
+                <a href="#reddit"><img src="{% static 'icons/reddit.png' %}" alt="Reddit"></a>
+            </div> {% endcomment %}
         </div>
     </div>
+
+    <!-- Main Content Area -->
+    <div class="dashboard-main">
+        <h1 class="dashboard-title">LETS BRING YOUR DATA TO LIFE.</h1>
+        
+        <!-- Stats Grid (4 black boxes) -->
+        <div class="stats-grid">
+            <div class="stat-box">
+                <h4>Total Requests</h4>
+                <div class="stat-number">{{ total_requests }}</div>
+                <div class="stat-trend">+{{ request_trend }}%</div>
+            </div>
+            
+            <div class="stat-box">
+                <h4>Time Spent</h4>
+                <div class="stat-number">{{ time_spent_hours }}h</div>
+                <div class="stat-detail">Last: {{ last_active }}</div>
+            </div>
+            
+            <div class="stat-box">
+                <h4>Reactions</h4>
+                <div class="stat-number">{{ total_reactions }}</div>
+                <div class="reactions-breakdown">
+                    <span>👍 {{ likes }}</span>
+                </div>
+            </div>
+            
+            <div class="stat-box">
+                <h4>Past Logins</h4>
+                <div class="login-list">
+                    {% for login in recent_logins|slice:":3" %}
+                    <div class="login-item">{{ login.date|date:"M d" }}</div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+        <!-- Activity Chart (Yellow Section) -->
+        <div class="activity-chart">
+            <canvas id="activityChart"></canvas>
+        </div>
+
+        <!-- Recent Activity (Red Section) -->
+        <div class="recent-activity">
+            <div class="activity-list">
+                {% for activity in recent_activities %}
+                <div class="activity-item">
+                    <div class="activity-icon">{{ activity.type|title }}</div>
+                    <div class="activity-content">{{ activity.description }}</div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.dashboard-container {
+    display: flex;
+    gap: 30px;
+    padding: 20px;
+    background: #1E1E1E;
+    color: white;
+    min-height: 100vh;
+}
+
+.dashboard-sidebar {
+    width: 250px;
+    padding: 20px;
+    background: #2D2D2D;
+    border-radius: 10px;
+}
+
+.user-profile {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.profile-pic {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.dashboard-nav a {
+    display: block;
+    padding: 10px;
+    color: white;
+    text-decoration: none;
+    margin-bottom: 5px;
+    border-radius: 5px;
+}
+
+.dashboard-nav a:hover {
+    background: #3D3D3D;
+}
+
+.social-links {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.dashboard-main {
+    flex: 1;
+}
+
+.dashboard-title {
+    margin-bottom: 30px;
+    font-size: 24px;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.stat-box {
+    background: #2D2D2D;
+    padding: 20px;
+    border-radius: 10px;
+    transition: transform 0.2s;
+}
+
+.stat-box:hover {
+    transform: translateY(-5px);
+}
+
+.activity-chart {
+    background: #FFD700;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    height: 300px;
+}
+
+.recent-activity {
+    background: #DC3545;
+    padding: 20px;
+    border-radius: 10px;
+    min-height: 200px;
+}
+
+.activity-item {
+    display: flex;
+    gap: 10px;
+    padding: 10px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+</style>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const ctx = document.getElementById('activityChart').getContext('2d');
+    new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: {{ chart_labels|safe }},
+            datasets: [{
+                label: 'Daily Activity',
+                data: {{ chart_data }},
+                borderColor: '#2D2D2D',
+                backgroundColor: 'rgba(45, 45, 45, 0.1)',
+                tension: 0.4,
+                fill: true
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    display: false
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    grid: {
+                        color: 'rgba(45, 45, 45, 0.1)'
+                    }
+                },
+                x: {
+                    grid: {
+                        display: false
+                    }
+                }
+            }
+        }
+    });
+});
+</script>
 {% endblock body %}
-
-
-    <script src="{% static "script.js" %}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
-        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
-        integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
-        crossorigin="anonymous"></script>
-</body>
-</html>
