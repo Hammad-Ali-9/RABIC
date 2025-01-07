@@ -78,33 +78,33 @@ def index(request):
         return render(request, 'index.html') 
 
 def docs(request):
+    # Define FAQ questions outside the if condition so they're always available
+    faq_questions = [
+        "How do I link a data source?",
+        "Can I analyze spreadsheets with multiple tabs?",
+        "What do I do after linking a data source?",
+        "Is there a discount for students, professors, or teachers?",
+        "What can I do in RABIc?",
+        "What data sources and file formats does RABIc support?"
+    ]
+    
     id = request.session.get('id')
     if id:
-        user=Signup.objects.get(id=id)
-        # print(username+" for docs")
-        # button_styles = "display: block;"
-        
-        # Add FAQ questions list
-        faq_questions = [
-            "How do I link a data source?",
-            "Can I analyze spreadsheets with multiple tabs?",
-            "What do I do after linking a data source?",
-            "Is there a discount for students, professors, or teachers?",
-            "What can I do in RABIc?",
-            "What data sources and file formats does RABIc support?"
-        ]
-        
+        user = Signup.objects.get(id=id)
         context = {
             'button_styles': button_styles,
             'button_display': button_display,
-            'username': user.username if user else None,
-            'image': user.image if user else None,
-            'faq_questions': faq_questions  # Add this to the context
+            'username': user.username,
+            'image': user.image,
+            'faq_questions': faq_questions
         }
-        
         return render(request, 'docs.html', context)
     else:
-        return render(request, 'docs.html') 
+        # Pass faq_questions even when user is not logged in
+        context = {
+            'faq_questions': faq_questions
+        }
+        return render(request, 'docs.html', context)
 
 def dashboard(request):
     id = request.session.get('id')
