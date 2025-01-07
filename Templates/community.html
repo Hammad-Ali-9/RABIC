@@ -43,44 +43,53 @@
                 </div>
                 <button type="button" class="btn btn-outline-success sort-by-top">Top</button>
             </div>
-            <div>
-                <!-- Button trigger modal -->
+            <div class="button-group" style="display: flex; gap: 10px;">
+                <a href="{% url 'rabic_bot' %}" class="btn btn-primary">
+                    <i class="fas fa-robot"></i> RABIc Data Analyst
+                </a>
+                
                 <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                     New Topic
                 </button>
-                
-                <!-- Modal -->
-                <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="staticBackdropLabel">New Post</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <form method="POST" action="{% url 'submit_post' %}">
-                                {% csrf_token %}
-                                
-                                <label for="topic">Topic*</label>
-                                <input type="text" id="topic" name="topic" placeholder="Enter the topic" required>
-                                
-                                <label for="category">Category*</label>
-                                <select id="category" name="category" required>
-                                    {% for category in categories %}
-                                    <option value="{{ category.name }}">{{ category.name }}</option>
-                                    {% endfor %}
-                                </select>
-                                
-                                <label for="content">Content*</label>
-                                <textarea id="content" name="content" placeholder="Write your content here" rows="5" required></textarea>
-                                
-                                <label for="tags">Tags</label>
-                                <input type="text" id="tags" name="tags" placeholder="Enter tags separated by commas">
-                                
-                                <button type="submit" class="btn-continue">Submit Post</button>
-                            </form>                        </div>
+            </div>
+        </div>
+        <div>
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                New Topic
+            </button>
+            
+            <!-- Modal -->
+            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">New Post</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    </div>
+                    <div class="modal-body">
+                        <form method="POST" action="{% url 'submit_post' %}">
+                            {% csrf_token %}
+                            
+                            <label for="topic">Topic*</label>
+                            <input type="text" id="topic" name="topic" placeholder="Enter the topic" required>
+                            
+                            <label for="category">Category*</label>
+                            <select id="category" name="category" required>
+                                {% for category in categories %}
+                                <option value="{{ category.name }}">{{ category.name }}</option>
+                                {% endfor %}
+                            </select>
+                            
+                            <label for="content">Content*</label>
+                            <textarea id="content" name="content" placeholder="Write your content here" rows="5" required></textarea>
+                            
+                            <label for="tags">Tags</label>
+                            <input type="text" id="tags" name="tags" placeholder="Enter tags separated by commas">
+                            
+                            <button type="submit" class="btn-continue">Submit Post</button>
+                        </form>                        </div>
+                </div>
                 </div>
             </div>
         </div>
@@ -125,5 +134,36 @@
         </div>
     </div>
 </div>
+
+<style>
+.button-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.button-group .btn {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.btn-primary {
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+    color: white;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #0b5ed7;
+    border-color: #0a58ca;
+    transform: translateY(-1px);
+}
+
+.btn i {
+    font-size: 0.9em;
+}
+</style>
 
 {% endblock body %}

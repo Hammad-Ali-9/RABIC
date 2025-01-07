@@ -83,7 +83,26 @@ def docs(request):
         user=Signup.objects.get(id=id)
         # print(username+" for docs")
         # button_styles = "display: block;"
-        return render(request, 'docs.html', {'button_styles': button_styles, 'button_display': button_display, 'username': user.username, 'image': user.image}) 
+        
+        # Add FAQ questions list
+        faq_questions = [
+            "How do I link a data source?",
+            "Can I analyze spreadsheets with multiple tabs?",
+            "What do I do after linking a data source?",
+            "Is there a discount for students, professors, or teachers?",
+            "What can I do in RABIc?",
+            "What data sources and file formats does RABIc support?"
+        ]
+        
+        context = {
+            'button_styles': button_styles,
+            'button_display': button_display,
+            'username': user.username if user else None,
+            'image': user.image if user else None,
+            'faq_questions': faq_questions  # Add this to the context
+        }
+        
+        return render(request, 'docs.html', context)
     else:
         return render(request, 'docs.html') 
 
@@ -287,3 +306,26 @@ def community_view(request):
         'all_tags': all_tags,
     }
     return render(request, 'community.html', context) 
+
+def rabic_bot(request):
+    id = request.session.get('id')
+    context = {}
+    
+    if id:
+        try:
+            user = Signup.objects.get(id=id)
+            context = {
+                'button_styles': button_styles,
+                'button_display': button_display,
+                'username': user.username,
+                'image': user.image.url if user.image else None,  # Handle case when image might not exist
+                'is_authenticated': True
+            }
+        except Signup.DoesNotExist:
+            # Handle case when user doesn't exist
+            request.session.flush()
+            context = {'is_authenticated': False}
+    else:
+        context = {'is_authenticated': False}
+    
+    return render(request, 'rabic_bot.html', context) 

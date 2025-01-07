@@ -5,68 +5,376 @@
     <div class="accordion-container mx-5 my-5">
         <h1 style="font-family:'Bebas Neue', sans-serif; font-weight:700">Frequently Asked:</h1>
         <div class="accordion accordion-flush" id="accordionFlushExample">
+            {% for question in faq_questions %}
             <div class="accordion-item">
-                <h2 class="accordion-header" id="flush-headingOne">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                        <strong>How do I link a data source?</strong>
+                <h2 class="accordion-header" id="flush-heading{{forloop.counter}}">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" 
+                            data-bs-target="#flush-collapse{{forloop.counter}}" aria-expanded="false" 
+                            aria-controls="flush-collapse{{forloop.counter}}">
+                        <strong>{{ question }}</strong>
                     </button>
                 </h2>
-                <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-                    <div class="accordion-body"><dd class="col-sm-9">You can link a data source on the My Files page or directly in our Chat interface. For more detailed instructions on linking a data source, check out our RABIc Start Guide.</dd></div>
+                <div id="flush-collapse{{forloop.counter}}" class="accordion-collapse collapse" 
+                     aria-labelledby="flush-heading{{forloop.counter}}" data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body">
+                        <dd class="col-sm-9" id="answer-{{forloop.counter}}">
+                            <div class="faq-placeholder">Click to load answer...</div>
+                        </dd>
+                    </div>
                 </div>
             </div>
-            <div class="accordion-item">
-                <h2 class="accordion-header" id="flush-headingTwo">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-                        <strong>Can I analyze spreadsheets with multiple tabs?</strong>
-                    </button>
-                </h2>
-                <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
-                    <div class="accordion-body"><dd class="col-sm-9">Yes! Upload your multi-tab spreadsheet as you would any other file. Once uploaded, you can refer to the individual names of the tabs in your prompts, and RABIc will perform analysis on those tabs accordingly.</dd></div>
-                </div>
-            </div>
-            <div class="accordion-item">
-                <h2 class="accordion-header" id="flush-headingThree">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
-                        <strong>What do I do after linking a data source?</strong>
-                    </button>
-                </h2>
-                <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
-                    <div class="accordion-body"><dd class="col-sm-9">After linking data source, you can analyze it with natural language prompting on the Chat page — try asking for insights or directing RABIc to create a visualization. For some additional examples on how to use RABIc, check out our Use Cases section.</dd></div>
-                </div>
-            </div>
-            <div class="accordion-item">
-                <h2 class="accordion-header" id="flush-headingFour">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
-                        <strong>Is there a discount for students, professors, or teachers?</strong>
-                    </button>
-                </h2>
-                <div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="flush-headingFour" data-bs-parent="#accordionFlushExample">
-                    <div class="accordion-body"><dd class="col-sm-9">Yes! We offer a 50% discount to students and other members of academia. Just sign up, shoot us a quick email at team@RABIc.ai letting us know you're a student before subscribing, and we'll let you know how to apply the 50% discount to your account.</dd></div>
-                </div>
-            </div>
-            <div class="accordion-item">
-                <h2 class="accordion-header" id="flush-headingFive">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFive" aria-expanded="false" aria-controls="flush-collapseFive">
-                        <strong>What can I do in RABIc?</strong>
-                    </button>
-                </h2>
-                <div id="flush-collapseFive" class="accordion-collapse collapse" aria-labelledby="flush-headingFive" data-bs-parent="#accordionFlushExample">
-                    <div class="accordion-body"><dd class="col-sm-9">Examples of prompts to use with RABIc:</dd></div>
-                </div>
-            </div>
-            <div class="accordion-item">
-                <h2 class="accordion-header" id="flush-headingSix">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseSix" aria-expanded="false" aria-controls="flush-collapseSix">
-                        <strong>What data sources are supported?</strong>
-                    </button>
-                </h2>
-                <div id="flush-collapseSix" class="accordion-collapse collapse" aria-labelledby="flush-headingSix" data-bs-parent="#accordionFlushExample">
-                    <div class="accordion-body"><dd class="col-sm-9">We currently support any data file format, including but not limited to Spreadsheets (.xls, .xlsx, .xlsm, .xlsb, .csv), Google Sheets, and Postgres databases. If you have a different file format, odds are we support it — go ahead and try to upload it within the RABIc Chat!</dd></div>
-                </div>
-            </div>
+            {% endfor %}
         </div>        
-        </div>
     </div>
 </div>
+
+<script>
+const GEMINI_API_KEY = 'AIzaSyBGQdMdZCqXMg8JwFj0qbkIZwai_-qGvIo';
+
+// FAQ questions configuration
+const faqs = [
+    {
+        question: "How do I link a data source in RABIc?",
+        elementId: "answer-1"
+    },
+    {
+        question: "Can I analyze spreadsheets with multiple tabs in RABIc?",
+        elementId: "answer-2"
+    },
+    {
+        question: "What do I do after linking a data source in RABIc?",
+        elementId: "answer-3"
+    },
+    {
+        question: "What are RABIc's pricing options and discounts for students/academia?",
+        elementId: "answer-4"
+    },
+    {
+        question: "What are the main features and capabilities of RABIc?",
+        elementId: "answer-5"
+    },
+    {
+        question: "What data sources and file formats does RABIc support?",
+        elementId: "answer-6"
+    }
+];
+
+// Track loaded answers
+const loadedAnswers = new Set();
+
+async function getFAQAnswer(question) {
+    try {
+        const prompt = `
+        You are RABIc's AI assistant. RABIc is an AI-powered data analysis platform.
+        Please provide a clear, helpful response to this question about RABIc's services:
+        
+        Question: ${question}
+        
+        Provide a response that is:
+        1. Informative but concise (2-3 sentences)
+        2. Focused on RABIc's capabilities
+        3. Professional and helpful in tone
+        `;
+
+        const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${GEMINI_API_KEY}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                contents: [{
+                    parts: [{
+                        text: prompt
+                    }]
+                }]
+            })
+        });
+
+        if (!response.ok) {
+            const errorData = await response.json();
+            console.error('API Error:', errorData);
+            throw new Error(`API request failed: ${response.status}`);
+        }
+
+        const data = await response.json();
+        console.log('API Response:', data);
+
+        if (data.candidates && data.candidates[0].content.parts[0].text) {
+            return data.candidates[0].content.parts[0].text.trim();
+        } else {
+            throw new Error('Unexpected API response format');
+        }
+    } catch (error) {
+        console.error('Error in getFAQAnswer:', error);
+        throw error;
+    }
+}
+
+// Add this function to handle CORS errors
+function handleCORSError(error) {
+    if (error.message.includes('CORS')) {
+        return "Sorry, there seems to be a connection issue. Please try again later.";
+    }
+    return "Failed to load answer. Please try again.";
+}
+
+// Listen for accordion opens
+document.querySelectorAll('.accordion-collapse').forEach(item => {
+    item.addEventListener('show.bs.collapse', async function() {
+        const answerId = this.querySelector('dd').id;
+        if (!loadedAnswers.has(answerId)) {
+            await loadAnswer(answerId);
+            loadedAnswers.add(answerId);
+        }
+    });
+});
+
+async function loadAnswer(elementId) {
+    const faq = faqs.find(f => f.elementId === elementId);
+    if (!faq) return;
+
+    const answerElement = document.getElementById(elementId);
+    showLoading(answerElement);
+
+    try {
+        const answer = await getFAQAnswer(faq.question);
+        const responseDiv = document.createElement('div');
+        responseDiv.className = 'faq-response';
+        responseDiv.innerHTML = `
+            <div class="answer-content">
+                ${answer}
+            </div>
+        `;
+        showAnswer(answerElement, responseDiv);
+    } catch (error) {
+        console.error('Error loading answer:', error);
+        const errorMessage = handleCORSError(error);
+        showError(answerElement, errorMessage);
+    }
+}
+
+function showLoading(element) {
+    element.innerHTML = `
+        <div class="loading-container">
+            <div class="loading-spinner"></div>
+            <div class="loading-text">Fetching answer...</div>
+        </div>
+    `;
+}
+
+function showAnswer(element, responseElement) {
+    element.innerHTML = '';
+    element.appendChild(responseElement);
+    element.classList.add('answer-loaded');
+}
+
+function showError(element, message = 'Failed to load answer. Please try again.') {
+    element.innerHTML = `
+        <div class="error-container">
+            <div class="error-icon">⚠️</div>
+            <div class="error-message">${message}</div>
+            <button onclick="retryLoad('${element.id}')" class="retry-button">Retry</button>
+        </div>
+    `;
+}
+
+function retryLoad(elementId) {
+    loadedAnswers.delete(elementId);
+    loadAnswer(elementId);
+}
+
+// Add error handling for the retry functionality
+window.onerror = function(msg, url, lineNo, columnNo, error) {
+    console.error('Error: ', msg, '\nURL: ', url, '\nLine: ', lineNo, '\nColumn: ', columnNo, '\nError object: ', error);
+    return false;
+};
+
+// Add this to help with debugging
+document.addEventListener('DOMContentLoaded', function() {
+    // Test API connection
+    getFAQAnswer("Test question")
+        .then(response => console.log('API Test successful:', response))
+        .catch(error => console.error('API Test failed:', error));
+});
+</script>
+
+<style>
+/* Base accordion styling */
+.accordion-item {
+    border: none;
+    margin-bottom: 1rem;
+    background: #f8f9fa;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.accordion-button {
+    background: #fff;
+    padding: 1.2rem;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+}
+
+.accordion-button:not(.collapsed) {
+    background: #e7f1ff;
+    color: #0d6efd;
+}
+
+/* Loading state styling */
+.loading-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    background: #f8f9fa;
+    border-radius: 8px;
+}
+
+.loading-spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #0d6efd;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+.loading-text {
+    margin-top: 1rem;
+    color: #6c757d;
+    font-size: 0.9rem;
+}
+
+/* Answer styling */
+.faq-response {
+    padding: 1.5rem;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.answer-section {
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+    color: #2c3e50;
+}
+
+.references-section {
+    border-top: 1px solid #e9ecef;
+    padding-top: 1rem;
+    margin-top: 1rem;
+}
+
+.references-title {
+    font-weight: 600;
+    color: #495057;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.references-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.reference-item {
+    margin-bottom: 1rem;
+    transition: transform 0.2s ease;
+}
+
+.reference-item:hover {
+    transform: translateX(5px);
+}
+
+.reference-item a {
+    text-decoration: none;
+    display: block;
+    padding: 1rem;
+    background: #f8f9fa;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+.reference-item a:hover {
+    background: #e9ecef;
+}
+
+.reference-title {
+    color: #0d6efd;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+
+.reference-snippet {
+    color: #6c757d;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+/* Error state styling */
+.error-container {
+    text-align: center;
+    padding: 2rem;
+    background: #fff3f3;
+    border-radius: 8px;
+}
+
+.error-icon {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.error-message {
+    color: #dc3545;
+    margin-bottom: 1rem;
+}
+
+.retry-button {
+    background: #dc3545;
+    color: white;
+    border: none;
+    padding: 0.5rem 1.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.retry-button:hover {
+    background: #c82333;
+}
+
+/* Animation */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Placeholder styling */
+.faq-placeholder {
+    text-align: center;
+    padding: 2rem;
+    color: #6c757d;
+    background: #f8f9fa;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.faq-placeholder:hover {
+    background: #e9ecef;
+}
+
+/* Fade in animation for answers */
+.answer-loaded {
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+</style>
 {% endblock body %}
